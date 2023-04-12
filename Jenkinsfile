@@ -63,7 +63,7 @@ pipeline {
 			steps {
              script {
                 def public_ip = sh(returnStdout: true, script: 'terraform output public_ip').trim()
-                sshagent(['Deploy_Auto']) {
+                sshagent(['Deploy_Dev']) {
 				        public_ip='${(terraform output public_ip)}'
 
 				        sh  "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/${env.JOB_NAME}/springbootApp.jar ec2-user@public_ip: /usr/local/tomcat9/webapps/ "
