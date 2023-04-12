@@ -7,7 +7,7 @@ pipeline {
     }
 
     environment{
-        GIT_REPO = 'https://github.com/vinayakakg7/tomcat_demo.git'
+        GIT_REPO = 'https://github.com/vinayakakg7/automation.git'
         GIT_BRANCH = 'main'
     }
     stages {
@@ -64,7 +64,7 @@ pipeline {
              script {
                 def public_ip = bat(returnStdout: true, script: 'terraform output public_ip').trim()
                 sshagent(['Deploy_Auto']) {
-				public_ip= $(terraform output public_ip)
+				  public_ip= $(terraform output public_ip)
 				        sh  "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/${env.JOB_NAME}/springbootApp.jar ec2-user@public_ip: /usr/local/tomcat9/webapps/ "
 				        sh   "ssh -o StrictHostKeyChecking=no ec2-user@public_ip tomcatdown"
 				        sh   "ssh -o StrictHostKeyChecking=no ec2-user@public_ip tomcatup"
