@@ -1,6 +1,6 @@
 provider "aws" {
-  profile                = "aws"
-  region                 = "ap-south-1"
+  region = "ap-south-1"
+  profile = "aws"
 }
 
 data "aws_security_group" "example" {
