@@ -1,7 +1,7 @@
 provider "aws" {
   shared_credentials_file = "/home/ansible/.aws/credentials"
-  region = "ap-south-1"
   profile = "aws"
+  region = "ap-south-1"
 }
 
 data "aws_security_group" "example" {
