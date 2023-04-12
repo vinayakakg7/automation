@@ -1,5 +1,4 @@
 provider "aws" {
-//  shared_credentials_file = "C:/Users/VinayakaKG/.aws/credentials"
   profile                = "aws"
   region                 = "ap-south-1"
 }
@@ -30,7 +29,6 @@ resource "null_resource" "remote" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-   //private_key = file("E:/Terra_Pem/nexuskey.pem")
     agent = true
     host        = aws_instance.Automation.public_ip
   }
